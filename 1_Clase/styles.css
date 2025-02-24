@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+header {
+    background-color: #000000;
+    padding: 15px;
+    text-align: center;
+    color: #ffffff;
+    position: relative;
+}
+
+
+header::before {
+    content: "¡Bienvenido/a!";
+    display: block;
+    background-color: #000000;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    top: -40px;
+    left: 0;
+    right: 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    animation: slideDown 1s ease-out forwards;
+}
+
+@keyframes slideDown {
+    from {
+        top: -40px;
+        opacity: 0;
+    }
+    to {
+        top: -30px;
+        opacity: 1;
+    }
+}
+
+nav {
+    background-color: #222222;
+    padding: 10px;
+    text-align: center;
+}
+
+nav a {
+    color: #ffffff;
+    margin: 0 15px;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.animal {
+    border: 1px solid #000000;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    transition: transform 0.3s ease;
+}
+
+.animal:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+h2 {
+    border-bottom: 2px solid #000000;
+    padding-bottom: 5px;
+}
+
+strong {
+    font-weight: bold;
+}
+
+footer {
+    background-color: #000000;
+    padding: 10px;
+    text-align: center;
+    margin-top: 20px;
+    color: #ffffff;
+}
+
+#contacto {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+}
