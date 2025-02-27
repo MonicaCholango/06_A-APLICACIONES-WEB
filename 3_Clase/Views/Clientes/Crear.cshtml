@@ -1,0 +1,17 @@
+﻿@model Clase_3.Models.ClienteModel
+<h2>Nuevo Cliente</h2>
+<form asp-action="Crear" method="post">
+    <label>Cédula</label>
+    <input type="text" asp-for="Cedula_RUC" class="form-control" required />
+
+    <label>Nombre</label>
+    <input type="text" asp-for="Nombre" class="form-control" required />
+
+    <label>Apellido</label>
+    <input type="text" asp-for="Apellido" class="form-control" required />
+
+    <label>Edad</label>
+    <input type="number" asp-for="Edad" class="form-control" required />
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>

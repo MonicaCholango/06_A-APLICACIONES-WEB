@@ -1,0 +1,19 @@
+﻿@model Clase_3.Models.ClienteModel
+<h2>Editar Cliente</h2>
+<form asp-action="Editar" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <label>Cedula</label>
+    <input type="text" asp-for="Cedula_RUC" class="form-control" required />
+
+    <label>Nombre</label>
+    <input type="text" asp-for="Nombre" class="form-control" required />
+
+    <label>Apellido</label>
+    <input type="text" asp-for="Apellido" class="form-control" required />
+
+    <label>Edad</label>
+    <input type="number" asp-for="Edad" class="form-control" required />
+
+    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+</form>

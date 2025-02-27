@@ -1,0 +1,35 @@
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\Clase 3.GeneratedMSBuildEditorConfig.editorconfig
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\Clase 3.AssemblyInfoInputs.cache
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\Clase 3.AssemblyInfo.cs
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\Clase 3.csproj.CoreCompileInputs.cache
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\Clase 3.MvcApplicationPartsAssemblyInfo.cache
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\Clase 3.RazorAssemblyInfo.cache
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\Clase 3.RazorAssemblyInfo.cs
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\Clase 3.sourcelink.json
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\bin\Debug\net8.0\appsettings.Development.json
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\bin\Debug\net8.0\appsettings.json
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\bin\Debug\net8.0\Clase 3.staticwebassets.runtime.json
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\bin\Debug\net8.0\Clase 3.staticwebassets.endpoints.json
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\bin\Debug\net8.0\Clase 3.exe
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\bin\Debug\net8.0\Clase 3.deps.json
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\bin\Debug\net8.0\Clase 3.runtimeconfig.json
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\bin\Debug\net8.0\Clase 3.dll
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\bin\Debug\net8.0\Clase 3.pdb
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\scopedcss\bundle\Clase 3.styles.css
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\scopedcss\projectbundle\Clase 3.bundle.scp.css
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\staticwebassets.build.json
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\staticwebassets.development.json
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\staticwebassets\msbuild.Clase 3.Microsoft.AspNetCore.StaticWebAssets.props
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\staticwebassets\msbuild.Clase 3.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\staticwebassets\msbuild.build.Clase 3.props
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.Clase 3.props
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.Clase 3.props
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\staticwebassets.pack.json
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\Clase 3.dll
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\refint\Clase 3.dll
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\Clase 3.pdb
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\Clase 3.genruntimeconfig.cache
+C:\UNIANDES\06_A APLICACIONES WEB\3_Clase\obj\Debug\net8.0\ref\Clase 3.dll

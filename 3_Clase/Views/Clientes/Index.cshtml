@@ -1,0 +1,39 @@
+﻿@{
+    @model List<ClienteModel>
+    ViewData["Title"] = "Clientes General";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Clientes General</h1>
+
+</div>
+
+<h2>Lista de Clientes</h2>
+<a href="/Clientes/Crear" class="btn btn-success my-4">Nuevo Cliente</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Cédula</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Edad</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cliente in Model)
+        {
+            <tr>
+                <td>@cliente.Cedula_RUC</td>
+                <td>@cliente.Nombre</td>
+                <td>@cliente.Apellido</td>
+                <td>@cliente.Edad</td>
+                <td>
+                    <a href="/Clientes/Detalle?id=@cliente.Id" class="btn btn-info">Ver</a>
+                    <a href="/Clientes/Editar?id=@cliente.Id" class="btn btn-warning">Editar</a>
+                    <a href="/Clientes/Eliminar?id=@cliente.Id" class="btn btn-danger">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
