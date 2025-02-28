@@ -1,88 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\UNIANDES\\06_A APLICACIONES WEB\\Ejercicio2\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{8E99E151-700C-4E98-BCC8-13C257AD9857}|Ejercicio2.csproj|c:\\uniandes\\06_a aplicaciones web\\ejercicio2\\controllers\\stockcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E99E151-700C-4E98-BCC8-13C257AD9857}|Ejercicio2.csproj|solutionrelative:controllers\\stockcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E99E151-700C-4E98-BCC8-13C257AD9857}|Ejercicio2.csproj|c:\\uniandes\\06_a aplicaciones web\\ejercicio2\\controllers\\proveedorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E99E151-700C-4E98-BCC8-13C257AD9857}|Ejercicio2.csproj|solutionrelative:controllers\\proveedorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E99E151-700C-4E98-BCC8-13C257AD9857}|Ejercicio2.csproj|c:\\uniandes\\06_a aplicaciones web\\ejercicio2\\controllers\\productoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8E99E151-700C-4E98-BCC8-13C257AD9857}|Ejercicio2.csproj|solutionrelative:controllers\\productoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8E99E151-700C-4E98-BCC8-13C257AD9857}|Ejercicio2.csproj|c:\\uniandes\\06_a aplicaciones web\\ejercicio2\\views\\proveedor\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8E99E151-700C-4E98-BCC8-13C257AD9857}|Ejercicio2.csproj|solutionrelative:views\\proveedor\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "StockController.cs",
-              "DocumentMoniker": "C:\\UNIANDES\\06_A APLICACIONES WEB\\Ejercicio2\\Controllers\\StockController.cs",
-              "RelativeDocumentMoniker": "Controllers\\StockController.cs",
-              "ToolTip": "C:\\UNIANDES\\06_A APLICACIONES WEB\\Ejercicio2\\Controllers\\StockController.cs",
-              "RelativeToolTip": "Controllers\\StockController.cs",
-              "ViewState": "AgIAAIAAAAAAAAAAAAAYwJEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T22:39:22.501Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ProveedorController.cs",
-              "DocumentMoniker": "C:\\UNIANDES\\06_A APLICACIONES WEB\\Ejercicio2\\Controllers\\ProveedorController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ProveedorController.cs",
-              "ToolTip": "C:\\UNIANDES\\06_A APLICACIONES WEB\\Ejercicio2\\Controllers\\ProveedorController.cs",
-              "RelativeToolTip": "Controllers\\ProveedorController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T22:38:46.434Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ProductosController.cs",
-              "DocumentMoniker": "C:\\UNIANDES\\06_A APLICACIONES WEB\\Ejercicio2\\Controllers\\ProductosController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ProductosController.cs",
-              "ToolTip": "C:\\UNIANDES\\06_A APLICACIONES WEB\\Ejercicio2\\Controllers\\ProductosController.cs",
-              "RelativeToolTip": "Controllers\\ProductosController.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAA7wAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T22:37:38.67Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\UNIANDES\\06_A APLICACIONES WEB\\Ejercicio2\\Views\\Proveedor\\Create.cshtml",
-              "RelativeDocumentMoniker": "Views\\Proveedor\\Create.cshtml",
-              "ToolTip": "C:\\UNIANDES\\06_A APLICACIONES WEB\\Ejercicio2\\Views\\Proveedor\\Create.cshtml",
-              "RelativeToolTip": "Views\\Proveedor\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-02-27T22:36:40.609Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }

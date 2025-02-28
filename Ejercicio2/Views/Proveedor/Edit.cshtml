@@ -1,58 +1,50 @@
-﻿@model Ejercicio2.Models.ClienteModel
+﻿@model Ejercicio2.Models.ProductosModel 
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Delete</h1>
+<h1>Edit</h1>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>ClienteModel</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Cedula_RUC)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Cedula_RUC)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Apellido)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Apellido)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Direccion)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Direccion)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Telefono)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Telefono)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.edad)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.edad)
-        </dd>
-    </dl>
-
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
+<h4>ProductosModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UnidadMedida" class="control-label"></label>
+                <input asp-for="UnidadMedida" class="form-control" />
+                <span asp-validation-for="UnidadMedida" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegSanitario" class="control-label"></label>
+                <input asp-for="RegSanitario" class="form-control" />
+                <span asp-validation-for="RegSanitario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CodigoBarras" class="control-label"></label>
+                <input asp-for="CodigoBarras" class="form-control" />
+                <span asp-validation-for="CodigoBarras" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
 </div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

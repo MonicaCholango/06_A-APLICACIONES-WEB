@@ -1,11 +1,12 @@
 ﻿using Ejercicio2.Models;
 using Microsoft.EntityFrameworkCore;    
 
+
 namespace Ejercicio2.Config
 {
     public class NetCoreDbContext : DbContext
     {
-        public NetCoreDbContext(DbContextOptions contexto) : base(contexto)
+        public NetCoreDbContext(DbContextOptions<NetCoreDbContext> options) : base(options)
         {
 
         }

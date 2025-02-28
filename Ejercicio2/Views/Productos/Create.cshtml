@@ -1,4 +1,4 @@
-﻿@model Ejercicio2.Models.ClienteModel
+﻿@model Ejercicio2.Models.ProductosModel 
 
 @{
     ViewData["Title"] = "Create";
@@ -46,7 +46,5 @@
 </div>
 
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

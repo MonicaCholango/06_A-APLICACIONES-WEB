@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore;
 using Ejercicio2.Models;
 using Ejercicio2.Config;
 
-namespace Bodega.Controllers
+namespace Ejercicio2.Controllers
 {
     public class ProveedorController : Controller
     {
-        private readonly NetCoreDbContext _context; 
+        private readonly NetCoreDbContext _context;
 
         public ProveedorController(NetCoreDbContext context)
         {

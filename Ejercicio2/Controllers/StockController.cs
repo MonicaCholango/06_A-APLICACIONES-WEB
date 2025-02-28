@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Ejercicio2.Config;    
 using Ejercicio2.Models;    
 
-namespace Bodega.Controllers
+namespace Ejercicio2.Controllers
 {
     public class StockController : Controller
     {
@@ -67,7 +67,7 @@ namespace Bodega.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
             //}
-            ViewData["ProductosModelId"] = new SelectList(_context.Productos, "Id", "CodigoBarras", stockModel.ProductosModelId);
+            ViewData["ProductosModelId"] = new SelectList(_context.Productos, "Id", "CodigoBarras", stockModel.ProductosModelId);   
             ViewData["ProveedorModelId"] = new SelectList(_context.Proveedores, "Id", "CorreoEmpresa", stockModel.ProveedorModelId);
             return View(stockModel);
         }
@@ -80,7 +80,7 @@ namespace Bodega.Controllers
                 return NotFound();
             }
 
-            var stockModel = await _context.Stocks.FindAsync(id);
+           var stockModel = await _context.Stocks.FindAsync(id);
             if (stockModel == null)
             {
                 return NotFound();

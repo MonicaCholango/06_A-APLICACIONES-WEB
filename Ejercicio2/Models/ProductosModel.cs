@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 namespace Ejercicio2.Models
+
 {
     public class ProductosModel
     {
