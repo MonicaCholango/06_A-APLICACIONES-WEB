@@ -1,12 +1,88 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\UNIANDES\\06_A APLICACIONES WEB\\Ejercicio2\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{8E99E151-700C-4E98-BCC8-13C257AD9857}|Ejercicio2.csproj|c:\\uniandes\\06_a aplicaciones web\\ejercicio2\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8E99E151-700C-4E98-BCC8-13C257AD9857}|Ejercicio2.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E99E151-700C-4E98-BCC8-13C257AD9857}|Ejercicio2.csproj|c:\\uniandes\\06_a aplicaciones web\\ejercicio2\\models\\productosmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E99E151-700C-4E98-BCC8-13C257AD9857}|Ejercicio2.csproj|solutionrelative:models\\productosmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E99E151-700C-4E98-BCC8-13C257AD9857}|Ejercicio2.csproj|c:\\uniandes\\06_a aplicaciones web\\ejercicio2\\models\\clientemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E99E151-700C-4E98-BCC8-13C257AD9857}|Ejercicio2.csproj|solutionrelative:models\\clientemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8E99E151-700C-4E98-BCC8-13C257AD9857}|Ejercicio2.csproj|c:\\uniandes\\06_a aplicaciones web\\ejercicio2\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8E99E151-700C-4E98-BCC8-13C257AD9857}|Ejercicio2.csproj|solutionrelative:controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ClienteModel.cs",
+              "DocumentMoniker": "C:\\UNIANDES\\06_A APLICACIONES WEB\\Ejercicio2\\Models\\ClienteModel.cs",
+              "RelativeDocumentMoniker": "Models\\ClienteModel.cs",
+              "ToolTip": "C:\\UNIANDES\\06_A APLICACIONES WEB\\Ejercicio2\\Models\\ClienteModel.cs",
+              "RelativeToolTip": "Models\\ClienteModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T19:42:44.705Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProductosModel.cs",
+              "DocumentMoniker": "C:\\UNIANDES\\06_A APLICACIONES WEB\\Ejercicio2\\Models\\ProductosModel.cs",
+              "RelativeDocumentMoniker": "Models\\ProductosModel.cs",
+              "ToolTip": "C:\\UNIANDES\\06_A APLICACIONES WEB\\Ejercicio2\\Models\\ProductosModel.cs",
+              "RelativeToolTip": "Models\\ProductosModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAsAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T19:44:31.045Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ClienteController.cs",
+              "DocumentMoniker": "C:\\UNIANDES\\06_A APLICACIONES WEB\\Ejercicio2\\Controllers\\ClienteController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ClienteController.cs",
+              "ToolTip": "C:\\UNIANDES\\06_A APLICACIONES WEB\\Ejercicio2\\Controllers\\ClienteController.cs",
+              "RelativeToolTip": "Controllers\\ClienteController.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAADwv0EAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-28T19:40:55.594Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\UNIANDES\\06_A APLICACIONES WEB\\Ejercicio2\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\UNIANDES\\06_A APLICACIONES WEB\\Ejercicio2\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAACQAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-02-28T19:36:13.755Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

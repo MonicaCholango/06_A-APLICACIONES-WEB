@@ -12,9 +12,9 @@ namespace Ejercicio2.Controllers
 {
     public class ProveedorController : Controller
     {
-        private readonly NetCoreDbContext _context;
+        private readonly Ejercicio2.Config.NetCoreDbContext _context;
 
-        public ProveedorController(NetCoreDbContext context)
+        public ProveedorController(Ejercicio2.Config.NetCoreDbContext context)
         {
             _context = context;
         }

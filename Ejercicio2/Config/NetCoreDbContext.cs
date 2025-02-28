@@ -1,5 +1,5 @@
 ﻿using Ejercicio2.Models;
-using Microsoft.EntityFrameworkCore;    
+using Microsoft.EntityFrameworkCore;
 
 
 namespace Ejercicio2.Config

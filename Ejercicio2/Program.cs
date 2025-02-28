@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("cn");
-builder.Services.AddDbContext<NetCoreDbContext>(opciones => opciones.UseSqlServer(connectionString));
+builder.Services.AddDbContext<Ejercicio2.Config.NetCoreDbContext>(opciones => opciones.UseSqlServer(connectionString));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

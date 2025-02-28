@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Ejercicio2.Config;    
-using Ejercicio2.Models;    
+using Ejercicio2.Config;
+using Ejercicio2.Models;
 
 namespace Ejercicio2.Controllers
 {
     public class StockController : Controller
     {
-        private readonly NetCoreDbContext _context;
+        private readonly Ejercicio2.Config.NetCoreDbContext _context;
 
-        public StockController(NetCoreDbContext context)
+        public StockController(Ejercicio2.Config.NetCoreDbContext context)
         {
             _context = context;
         }
@@ -22,8 +22,8 @@ namespace Ejercicio2.Controllers
         // GET: Stock
         public async Task<IActionResult> Index()
         {
-            var NetCoreDbContext = _context.Stocks.Include(s => s.ProductosModel).Include(s => s.ProveedorModel);
-            return View(await NetCoreDbContext.ToListAsync());
+            var netCoreDbContext = _context.Stocks.Include(s => s.ProductosModel).Include(s => s.ProveedorModel);
+            return View(await netCoreDbContext.ToListAsync());
         }
 
         // GET: Stock/Details/5
@@ -67,7 +67,7 @@ namespace Ejercicio2.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
             //}
-            ViewData["ProductosModelId"] = new SelectList(_context.Productos, "Id", "CodigoBarras", stockModel.ProductosModelId);   
+            ViewData["ProductosModelId"] = new SelectList(_context.Productos, "Id", "CodigoBarras", stockModel.ProductosModelId);
             ViewData["ProveedorModelId"] = new SelectList(_context.Proveedores, "Id", "CorreoEmpresa", stockModel.ProveedorModelId);
             return View(stockModel);
         }
@@ -80,7 +80,7 @@ namespace Ejercicio2.Controllers
                 return NotFound();
             }
 
-           var stockModel = await _context.Stocks.FindAsync(id);
+            var stockModel = await _context.Stocks.FindAsync(id);
             if (stockModel == null)
             {
                 return NotFound();

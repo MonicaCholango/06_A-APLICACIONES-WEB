@@ -12,9 +12,9 @@ namespace Ejercicio2.Controllers
 {
     public class ProductosController : Controller
     {
-        private readonly NetCoreDbContext _context;
+        private readonly Ejercicio2.Config.NetCoreDbContext _context;
 
-        public ProductosController(NetCoreDbContext context)
+        public ProductosController(Ejercicio2.Config.NetCoreDbContext context)
         {
             _context = context;
         }

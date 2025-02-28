@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Ejercicio2.Models.ProveedorModel>    
+﻿@model IEnumerable<Ejercicio2.Models.ProveedorModel>
 
 @{
     ViewData["Title"] = "Lista de Productos";
@@ -16,41 +16,26 @@
     <thead class="table-dark">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nombre)
+                @Html.DisplayNameFor(model => model.NombreEmpresa)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UnidadMedida)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RegSanitario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CodigoBarras)
-            </th>
+
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UnidadMedida)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RegSanitario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CodigoBarras)
-            </td>
-            <td>
-                <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a> 
-                <a class="btn btn btn-outline-info"  asp-action="Details" asp-route-id="@item.Id">Detalles</a> 
-                <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreEmpresa)
+                </td>
+
+                <td>
+                    <a class="btn btn-outline-warning" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                    <a class="btn btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id">Detalles</a>
+                    <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Eliminar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
