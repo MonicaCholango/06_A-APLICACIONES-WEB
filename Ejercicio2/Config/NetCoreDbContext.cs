@@ -11,8 +11,6 @@ namespace Ejercicio2.Config
 
         }
 
-        /*stock*/
-
         public DbSet<ProductosModel> Productos { get; set; }
         public DbSet<ProveedorModel> Proveedores { get; set; }
         public DbSet<StockModel> Stocks { get; set; }

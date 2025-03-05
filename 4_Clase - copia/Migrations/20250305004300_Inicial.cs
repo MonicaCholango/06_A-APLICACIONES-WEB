@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace Ejercicio2.Migrations
+namespace _4_Clase.Migrations
 {
     /// <inheritdoc />
-    public partial class Inicial2 : Migration
+    public partial class Inicial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<_4_Clase.Models.TipoPreguntaModel>
+
+@{
+    ViewData["Title"] = "Lista de Tipo de Preguntas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var contador = 1;
+}
+
+<h1>Lista de Tipo de Preguntas</h1>
+<p>
+    <a asp-action="nuevo" class="btn btn-outline-primary">Nuevo Tipo de Pregunta</a>
+</p>
+
+<table class="table table-bordered table-responsive">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Detalle</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tipo in Model)
+        {
+            <tr>
+                <td>@contador</td>
+                <td>@Html.DisplayFor(model => tipo.Detalle)</td>
+                <td>
+                    <a asp-action="Editar" class="btn btn-outline-warning" asp-route-id="@tipo.Id">Editar</a>
+                    <a asp-action="Eliminar" class="btn btn-outline-danger" asp-route-id="@tipo.Id">Eliminar</a>
+                </td>
+            </tr>
+            contador += 1;
+        }
+    </tbody>
+    </
+</table>
