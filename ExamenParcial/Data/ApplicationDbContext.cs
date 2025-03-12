@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ExamenParcial.Models;
+using ExamenParcial.Data;
+
 
 namespace ExamenParcial.Data
 {

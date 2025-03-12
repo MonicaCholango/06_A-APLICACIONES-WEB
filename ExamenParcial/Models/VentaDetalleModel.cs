@@ -38,6 +38,6 @@ namespace ExamenParcial.Models
         public virtual Venta? Venta { get; set; }
 
         [ForeignKey("ProductoId")]
-        public virtual Producto? Producto { get; set; }
+        public virtual Producto? Productos { get; set; }
     }
 }
