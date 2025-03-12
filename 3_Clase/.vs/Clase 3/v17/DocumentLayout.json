@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\UNIANDES\\06_A APLICACIONES WEB\\3_Clase\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{9A130E50-A29A-48CC-A963-A81FE45B747D}|Clase 3.csproj|c:\\uniandes\\06_a aplicaciones web\\3_clase\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9A130E50-A29A-48CC-A963-A81FE45B747D}|Clase 3.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{9A130E50-A29A-48CC-A963-A81FE45B747D}|Clase 3.csproj|c:\\uniandes\\06_a aplicaciones web\\3_clase\\controllers\\clientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9A130E50-A29A-48CC-A963-A81FE45B747D}|Clase 3.csproj|solutionrelative:controllers\\clientescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -19,6 +23,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\UNIANDES\\06_A APLICACIONES WEB\\3_Clase\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\UNIANDES\\06_A APLICACIONES WEB\\3_Clase\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-03-11T21:47:06.617Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "ClientesController.cs",
               "DocumentMoniker": "C:\\UNIANDES\\06_A APLICACIONES WEB\\3_Clase\\Controllers\\ClientesController.cs",
               "RelativeDocumentMoniker": "Controllers\\ClientesController.cs",
