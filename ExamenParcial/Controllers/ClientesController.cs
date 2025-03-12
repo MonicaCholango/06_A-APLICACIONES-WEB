@@ -15,7 +15,7 @@ namespace ExamenParcial.Controllers
             _context = context;
         }
 
-        // GET: Clientes
+
         public async Task<IActionResult> Index()
         {
             return View(await _context.Clientes.ToListAsync());
