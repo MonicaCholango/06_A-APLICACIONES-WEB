@@ -1,0 +1,31 @@
+﻿@model ExamenParcial.Models.Venta
+
+@{
+    ViewData["Title"] = "Detalles de Venta";
+}
+
+<h1>Detalles de la Venta</h1>
+
+<div>
+    <h4>Venta</h4>
+    <hr />
+
+    <dl class="dl-horizontal">
+        <dt>Cliente</dt>
+        <dd>@Model.Cliente.Nombre</dd>
+
+        <dt>Total</dt>
+        <dd>@Model.Total</dd>
+
+        <dt>Productos</dt>
+        <dd>
+            @foreach (var detalle in Model.VentaDetalles)
+            {
+                <p>@detalle.Producto.Nombre - Cantidad: @detalle.Cantidad - Precio: @detalle.Precio</p>
+            }
+        </dd>
+    </dl>
+
+    <a href="@Url.Action("Index")" class="btn btn-secondary">Volver a la lista de Ventas</a>
+</div>
+

@@ -1,0 +1,41 @@
+﻿@model ExamenParcial.Models.Venta
+
+@{
+    ViewData["Title"] = "Crear Venta";
+}
+
+<h1>Crear Venta</h1>
+
+<h4>Venta</h4>
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ClienteId)
+        @Html.DropDownListFor(model => model.ClienteId, (SelectList)ViewData["Clientes"], "Seleccionar Cliente")
+        @Html.ValidationMessageFor(model => model.ClienteId)
+    </div>
+
+    <div class="form-group">
+        @Html.Label("Productos")
+        @Html.ListBox("productoIds", (SelectList)ViewData["Productos"], new { multiple = "multiple" })
+        @Html.ValidationMessage("productoIds")
+    </div>
+
+    <div class="form-group">
+        <label>Cantidades (una por producto seleccionado)</label>
+        <input type="number" name="cantidades" value="1" />
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Total)
+        @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @readonly = "readonly" } })
+        @Html.ValidationMessageFor(model => model.Total)
+    </div>
+
+    <button type="submit" class="btn btn-success">Crear Venta</button>
+    <a href="@Url.Action("Index")" class="btn btn-secondary">Cancelar</a>
+}
