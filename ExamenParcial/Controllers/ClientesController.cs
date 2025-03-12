@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ExamenParcial.Models;
-using ExamenParcial.Models.Data;
 using ExamenParcial.Data;
 
 namespace ExamenParcial.Controllers
