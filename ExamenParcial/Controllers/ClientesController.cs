@@ -1,22 +1,41 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ExamenParcial.Data;
 using ExamenParcial.Models;
+using ExamenParcial.Models.Data;
+using ExamenParcial.Data;
 
 namespace ExamenParcial.Controllers
 {
-    public class ClienteController : Controller
+    public class ClientesController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public ClienteController(ApplicationDbContext context)
+        public ClientesController(ApplicationDbContext context)
         {
             _context = context;
         }
 
+        // GET: Clientes
         public async Task<IActionResult> Index()
         {
             return View(await _context.Clientes.ToListAsync());
+        }
+
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var cliente = await _context.Clientes
+                .FirstOrDefaultAsync(m => m.ClienteId == id);
+            if (cliente == null)
+            {
+                return NotFound();
+            }
+
+            return View(cliente);
         }
 
         public IActionResult Create()
@@ -26,7 +45,7 @@ namespace ExamenParcial.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nombre,Apellido,Email,Telefono")] Cliente cliente)
+        public async Task<IActionResult> Create([Bind("Nombre,Apellido,Email,Telefono,Direccion")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
@@ -37,8 +56,13 @@ namespace ExamenParcial.Controllers
             return View(cliente);
         }
 
-        public async Task<IActionResult> Edit(int id)
+        public async Task<IActionResult> Edit(int? id)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
             var cliente = await _context.Clientes.FindAsync(id);
             if (cliente == null)
             {
@@ -49,7 +73,7 @@ namespace ExamenParcial.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ClienteId,Nombre,Apellido,Email,Telefono")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("ClienteId,Nombre,Apellido,Email,Telefono,Direccion")] Cliente cliente)
         {
             if (id != cliente.ClienteId)
             {
@@ -60,12 +84,13 @@ namespace ExamenParcial.Controllers
             {
                 try
                 {
+                    cliente.UpdatedAt = DateTime.Now;
                     _context.Update(cliente);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!_context.Clientes.Any(e => e.ClienteId == cliente.ClienteId))
+                    if (!ClienteExists(cliente.ClienteId))
                     {
                         return NotFound();
                     }
@@ -79,13 +104,20 @@ namespace ExamenParcial.Controllers
             return View(cliente);
         }
 
-        public async Task<IActionResult> Details(int id)
+        public async Task<IActionResult> Delete(int? id)
         {
-            var cliente = await _context.Clientes.FindAsync(id);
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var cliente = await _context.Clientes
+                .FirstOrDefaultAsync(m => m.ClienteId == id);
             if (cliente == null)
             {
                 return NotFound();
             }
+
             return View(cliente);
         }
 
@@ -94,14 +126,18 @@ namespace ExamenParcial.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var cliente = await _context.Clientes.FindAsync(id);
-            if (cliente == null)
+            if (cliente != null)
             {
-                return NotFound();
+                _context.Clientes.Remove(cliente);
+                await _context.SaveChangesAsync();
             }
 
-            _context.Clientes.Remove(cliente);
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
+        }
+
+        private bool ClienteExists(int id)
+        {
+            return _context.Clientes.Any(e => e.ClienteId == id);
         }
     }
 }

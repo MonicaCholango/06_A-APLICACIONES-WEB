@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using ExamenParcial.Data;
-using ExamenParcial.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using ExamenParcial.Models;
+using ExamenParcial.Models.Data;
+using ExamenParcial.Models.ViewModel;
+using ExamenParcial.Data;
 
 namespace ExamenParcial.Controllers
 {
@@ -18,67 +19,24 @@ namespace ExamenParcial.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var ventas = await _context.Ventas.Include(v => v.Cliente).ToListAsync();
+            var ventas = await _context.Ventas
+                .Include(v => v.Cliente)
+                .OrderByDescending(v => v.FechaVenta)
+                .ToListAsync();
             return View(ventas);
         }
 
-        public IActionResult Create()
+        public async Task<IActionResult> Details(int? id)
         {
-            ViewData["Clientes"] = new SelectList(_context.Clientes, "ClienteId", "Nombre");
-            ViewData["Productos"] = new SelectList(_context.Productos, "ProductoId", "Nombre");
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ClienteId,Total")] Venta venta, List<int> productoIds, List<int> cantidades)
-        {
-            if (ModelState.IsValid)
+            if (id == null)
             {
-                decimal total = 0;
-                venta.VentaDetalles = new List<VentaDetalle>();
-
-                for (int i = 0; i < productoIds.Count; i++)
-                {
-                    var productoId = productoIds[i];
-                    var cantidad = cantidades[i];
-                    var producto = await _context.Productos.FindAsync(productoId);
-                    if (producto != null)
-                    {
-                        total += producto.Precio * cantidad;
-                        venta.VentaDetalles.Add(new VentaDetalle
-                        {
-                            ProductoId = productoId,
-                            Cantidad = cantidad,
-                            Precio = producto.Precio
-                        });
-                    }
-                }
-
-                venta.Total = total;
-                _context.Add(venta);
-
-                // Establecer la relación entre la venta y los detalles antes de guardar
-                foreach (var detalle in venta.VentaDetalles)
-                {
-                    detalle.Venta = venta; // Establecer la relación
-                }
-
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return NotFound();
             }
 
-            ViewData["Clientes"] = new SelectList(_context.Clientes, "ClienteId", "Nombre", venta.ClienteId);
-            ViewData["Productos"] = new SelectList(_context.Productos, "ProductoId", "Nombre");
-            return View(venta);
-        }
-
-        public async Task<IActionResult> Details(int id)
-        {
             var venta = await _context.Ventas
                 .Include(v => v.Cliente)
-                .Include(v => v.VentaDetalles)
-                .ThenInclude(vd => vd.Producto)
+                .Include(v => v.VentaDetalle)
+                .ThenInclude(dv => dv.Producto)
                 .FirstOrDefaultAsync(m => m.VentaId == id);
 
             if (venta == null)
@@ -89,19 +47,7 @@ namespace ExamenParcial.Controllers
             return View(venta);
         }
 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public IActionResult Create()
         {
-            var venta = await _context.Ventas.FindAsync(id);
-            if (venta == null)
+            var viewModel = new VentaViewModel
             {
-                return NotFound();
-            }
-
-            _context.Ventas.Remove(venta);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-    }
-}   

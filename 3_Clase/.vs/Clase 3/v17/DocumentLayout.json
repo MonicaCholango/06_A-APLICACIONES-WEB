@@ -28,7 +28,7 @@
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "C:\\UNIANDES\\06_A APLICACIONES WEB\\3_Clase\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-03-11T21:47:06.617Z",
               "EditorCaption": ""
@@ -43,8 +43,7 @@
               "RelativeToolTip": "Controllers\\ClientesController.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAAgwCsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T14:59:06.272Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-27T14:59:06.272Z"
             }
           ]
         }
