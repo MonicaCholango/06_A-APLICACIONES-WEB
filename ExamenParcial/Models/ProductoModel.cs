@@ -2,14 +2,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ExamenParcial.Models;
 using ExamenParcial.Models.Data;
+using ExamenParcial.Data;
 
 namespace ExamenParcial.Controllers
 {
     public class ProductosController : Controller
     {
-        private readonly SistemaVentasContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public ProductosController(SistemaVentasContext context)
+        public ProductosController(ApplicationDbContext context)
         {
             _context = context;
         }
