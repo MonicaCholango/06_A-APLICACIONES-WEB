@@ -4,46 +4,95 @@
     ViewData["Title"] = "Crear Venta";
 }
 
-<h1>Crear Venta</h1>
+<h2 class="mb-4">Crear Venta</h2>
 
-<h4>Venta</h4>
-<hr />
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Venta.ClienteId)
-
-        @Html.ListBox("Venta.ClienteId",
-                new SelectList(Model.Clientes, "ClienteId", "Nombre"),
-                new { @class = "form-control", size = "1" })
-
-        @Html.ValidationMessageFor(model => model.Venta.ClienteId)
+<form asp-action="Create" method="post">
+    <div class="form-group mb-3">
+        <label asp-for="Venta.ClienteId" class="form-label">Cliente</label>
+        <select asp-for="Venta.ClienteId" class="form-control" asp-items="@(new SelectList(Model.Clientes, "ClienteId", "Nombre"))">
+            <option value="">-- Seleccione un cliente --</option>
+        </select>
+        <span asp-validation-for="Venta.ClienteId" class="text-danger"></span>
     </div>
 
-    <div class="form-group">
-        @Html.Label("Productos")
-
-        @Html.ListBox("productoIds",
-                new SelectList(Model.Productos, "ProductoId", "Nombre"),
-                new { @class = "form-control", size = "1" })
-
-        @Html.ValidationMessage("productoIds")
+    <div class="form-group mb-3">
+        <label asp-for="Venta.FechaVenta" class="form-label">Fecha de Venta</label>
+        <input asp-for="Venta.FechaVenta" class="form-control" type="datetime-local" value="@Model.Venta.FechaVenta.ToString("yyyy-MM-ddTHH:mm")" />
     </div>
 
-    <div class="form-group">
-        <label>Cantidades (una por producto seleccionado)</label>
-        <input type="number" name="cantidades" value="1" />
+    <div class="form-group mb-3">
+        <label asp-for="Venta.Estado" class="form-label">Estado</label>
+        <input asp-for="Venta.Estado" class="form-control" />
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Venta.Total)
-        @Html.EditorFor(model => model.Venta.Total, new { htmlAttributes = new { @readonly = "readonly" } })
-        @Html.ValidationMessageFor(model => model.Venta.Total)
+    <hr />
+
+    <h4>Productos</h4>
+    <div id="productosContainer">
+        <div class="producto-item row mb-3">
+            <div class="col-md-6">
+                <label class="form-label">Producto</label>
+                <select name="ProductoIds" class="form-control">
+                    <option value="">-- Seleccione un producto --</option>
+                    @foreach (var producto in Model.Productos)
+                    {
+                        <option value="@producto.ProductoId">@producto.Nombre</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Cantidad</label>
+                <input name="Cantidades" type="number" class="form-control" min="1" value="1" />
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <button type="button" class="btn btn-danger remove-producto w-100">Eliminar</button>
+            </div>
+        </div>
     </div>
 
-    <button type="submit" class="btn btn-success">Crear Venta</button>
-    <a href="@Url.Action("Index")" class="btn btn-secondary">Cancelar</a>
+    <div class="mb-3">
+        <button type="button" class="btn btn-primary" id="agregarProducto">+ Agregar otro producto</button>
+    </div>
+
+    <button type="submit" class="btn btn-success">Guardar Venta</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@section Scripts {
+    <script>
+        document.getElementById('agregarProducto').addEventListener('click', function () {
+            var container = document.getElementById('productosContainer');
+
+            var nuevoItem = document.createElement('div');
+            nuevoItem.className = 'producto-item row mb-3';
+
+            nuevoItem.innerHTML = `
+                <div class="col-md-6">
+                    <label class="form-label">Producto</label>
+                    <select name="ProductoIds" class="form-control">
+                        <option value="">-- Seleccione un producto --</option>
+        @foreach (var producto in Model.Productos)
+        {
+                                <option value="@producto.ProductoId">@producto.Nombre</option>
+        }
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Cantidad</label>
+                    <input name="Cantidades" type="number" class="form-control" min="1" value="1" />
+                </div>
+                <div class="col-md-2 d-flex align-items-end">
+                    <button type="button" class="btn btn-danger remove-producto w-100">Eliminar</button>
+                </div>
+            `;
+
+            container.appendChild(nuevoItem);
+        });
+
+        document.addEventListener('click', function (e) {
+            if (e.target.classList.contains('remove-producto')) {
+                e.target.closest('.producto-item').remove();
+            }
+        });
+    </script>
 }

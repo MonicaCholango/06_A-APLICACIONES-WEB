@@ -54,16 +54,49 @@ namespace ExamenParcial.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ClienteId,FechaVenta")] Venta venta)
+        public IActionResult Create(VentaViewModel model, int[] ProductoIds, int[] Cantidades)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(venta);
-                await _context.SaveChangesAsync();
+                var venta = model.Venta;
+                venta.CreatedAt = DateTime.Now;
+                venta.UpdatedAt = DateTime.Now;
+
+                decimal total = 0;
+                var detalles = new List<VentaDetalle>();
+                for (int i = 0; i < ProductoIds.Length; i++)
+                {
+                    var producto = _context.Productos.Find(ProductoIds[i]);
+                    if (producto != null)
+                    {
+                        var cantidad = Cantidades[i];
+                        var subtotal = producto.Precio * cantidad;
+                        total += subtotal;
+
+                        detalles.Add(new VentaDetalle
+                        {
+                            ProductoId = producto.ProductoId,
+                            Cantidad = cantidad,
+                            PrecioUnitario = producto.Precio,
+                            Subtotal = subtotal
+                        });
+                    }
+                }
+
+                venta.Total = total;
+                venta.VentaDetalle = detalles;
+
+                _context.Ventas.Add(venta);
+                _context.SaveChanges();
+
                 return RedirectToAction(nameof(Index));
             }
-            return View(venta);
+
+            model.Clientes = _context.Clientes.ToList();
+            model.Productos = _context.Productos.ToList();
+            return View(model);
         }
+
 
 
         public async Task<IActionResult> Edit(int? id)
