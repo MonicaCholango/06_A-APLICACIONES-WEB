@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ExamenParcial.Models;
-using ExamenParcial.Data;
-
 
 namespace ExamenParcial.Data
 {
@@ -13,5 +11,26 @@ namespace ExamenParcial.Data
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Venta> Ventas { get; set; }
         public DbSet<VentaDetalle> VentaDetalles { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Producto>()
+                .Property(p => p.Precio)
+                .HasColumnType("decimal(18,2)");
+
+            modelBuilder.Entity<Venta>()
+                .Property(v => v.Total)
+                .HasColumnType("decimal(18,2)");
+
+            modelBuilder.Entity<VentaDetalle>()
+                .Property(vd => vd.PrecioUnitario)
+                .HasColumnType("decimal(18,2)");
+
+            modelBuilder.Entity<VentaDetalle>()
+                .Property(vd => vd.Subtotal)
+                .HasColumnType("decimal(18,2)");
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }
