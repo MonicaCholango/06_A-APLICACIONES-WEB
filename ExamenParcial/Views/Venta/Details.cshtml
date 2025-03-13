@@ -19,9 +19,9 @@
 
         <dt>Productos</dt>
         <dd>
-            @foreach (var detalle in Model.VentaDetalles)
+            @foreach (var detalle in Model.VentaDetalle)
             {
-                <p>@detalle.Producto.Nombre - Cantidad: @detalle.Cantidad - Precio: @detalle.Precio</p>
+                <p>@detalle.Productos.Nombre - Cantidad: @detalle.Cantidad - Precio: @detalle.Productos.Precio</p>
             }
         </dd>
     </dl>
