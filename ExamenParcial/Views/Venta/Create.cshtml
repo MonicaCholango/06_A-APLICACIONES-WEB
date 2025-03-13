@@ -1,4 +1,4 @@
-﻿@model ExamenParcial.Models.Venta
+﻿@model ExamenParcial.Models.ViewModel.VentaViewModel
 
 @{
     ViewData["Title"] = "Crear Venta";
@@ -14,14 +14,22 @@
     @Html.AntiForgeryToken()
 
     <div class="form-group">
-        @Html.LabelFor(model => model.ClienteId)
-        @Html.DropDownListFor(model => model.ClienteId, (SelectList)ViewData["Clientes"], "Seleccionar Cliente")
-        @Html.ValidationMessageFor(model => model.ClienteId)
+        @Html.LabelFor(model => model.Venta.ClienteId)
+
+        @Html.ListBox("Venta.ClienteId",
+                new SelectList(Model.Clientes, "ClienteId", "Nombre"),
+                new { @class = "form-control", size = "1" })
+
+        @Html.ValidationMessageFor(model => model.Venta.ClienteId)
     </div>
 
     <div class="form-group">
         @Html.Label("Productos")
-        @Html.ListBox("productoIds", (SelectList)ViewData["Productos"], new { multiple = "multiple" })
+
+        @Html.ListBox("productoIds",
+                new SelectList(Model.Productos, "ProductoId", "Nombre"),
+                new { @class = "form-control", size = "1" })
+
         @Html.ValidationMessage("productoIds")
     </div>
 
@@ -31,9 +39,9 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Total)
-        @Html.EditorFor(model => model.Total, new { htmlAttributes = new { @readonly = "readonly" } })
-        @Html.ValidationMessageFor(model => model.Total)
+        @Html.LabelFor(model => model.Venta.Total)
+        @Html.EditorFor(model => model.Venta.Total, new { htmlAttributes = new { @readonly = "readonly" } })
+        @Html.ValidationMessageFor(model => model.Venta.Total)
     </div>
 
     <button type="submit" class="btn btn-success">Crear Venta</button>

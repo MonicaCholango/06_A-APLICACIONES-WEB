@@ -6,8 +6,8 @@ namespace ExamenParcial.Models.ViewModel
     {
         public Venta Venta { get; set; }
         public List<DetalleVentaViewModel> DetalleVentas { get; set; } = new List<DetalleVentaViewModel>();
-        public SelectList Clientes { get; set; }
-        public SelectList Productos { get; set; }
+        public List<Cliente> Clientes { get; set; }
+        public List<Producto> Productos { get; set; }
         public int? SelectedClienteId { get; set; }
         public int? SelectedProductoId { get; set; }
         public int? Cantidad { get; set; }

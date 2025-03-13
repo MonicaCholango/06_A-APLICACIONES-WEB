@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ExamenParcial.Models;
 using ExamenParcial.Data;
+using ExamenParcial.Models.ViewModel;
 
 namespace ExamenParcial.Controllers
 {
@@ -18,12 +19,12 @@ namespace ExamenParcial.Controllers
         public async Task<IActionResult> Index()
         {
             var ventas = await _context.Ventas
-                .Include(v => v.Cliente)  
+                .Include(v => v.Cliente)
                 .ToListAsync();
             return View(ventas);
         }
 
-        
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,7 +33,7 @@ namespace ExamenParcial.Controllers
             }
 
             var venta = await _context.Ventas
-                .Include(v => v.Cliente)  
+                .Include(v => v.Cliente)
                 .FirstOrDefaultAsync(m => m.VentaId == id);
 
             if (venta == null)
@@ -43,13 +44,14 @@ namespace ExamenParcial.Controllers
             return View(venta);
         }
 
- 
+
         public IActionResult Create()
         {
-            return View();
+            var vm = new VentaViewModel() { Clientes=_context.Clientes.ToList() , Venta=new(), Productos = _context.Productos.ToList()};
+            return View(vm);
         }
 
-    
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ClienteId,FechaVenta")] Venta venta)
@@ -63,7 +65,7 @@ namespace ExamenParcial.Controllers
             return View(venta);
         }
 
-        
+
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -79,7 +81,7 @@ namespace ExamenParcial.Controllers
             return View(venta);
         }
 
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("VentaId,ClienteId,FechaVenta")] Venta venta)
@@ -112,7 +114,7 @@ namespace ExamenParcial.Controllers
             return View(venta);
         }
 
-        
+
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -121,7 +123,7 @@ namespace ExamenParcial.Controllers
             }
 
             var venta = await _context.Ventas
-                .Include(v => v.Cliente)  
+                .Include(v => v.Cliente)
                 .FirstOrDefaultAsync(m => m.VentaId == id);
 
             if (venta == null)
@@ -132,7 +134,7 @@ namespace ExamenParcial.Controllers
             return View(venta);
         }
 
-   
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

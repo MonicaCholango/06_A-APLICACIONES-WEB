@@ -13,7 +13,7 @@ var app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Producto/Index"); 
+    app.UseExceptionHandler("/Productos/Index"); 
     app.UseHsts();
 }
 

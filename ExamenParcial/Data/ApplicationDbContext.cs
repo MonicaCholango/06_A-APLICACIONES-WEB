@@ -18,6 +18,16 @@ namespace ExamenParcial.Data
                 .Property(p => p.Precio)
                 .HasColumnType("decimal(18,2)");
 
+            modelBuilder.Entity<Producto>()
+                .Property(p => p.CreatedAt)
+                .HasColumnType("datetime")
+                .HasDefaultValueSql("GETDATE()");  
+
+            modelBuilder.Entity<Producto>()
+                .Property(p => p.UpdatedAt)
+                .HasColumnType("datetime")
+                .HasDefaultValueSql("GETDATE()");  
+
             modelBuilder.Entity<Venta>()
                 .Property(v => v.Total)
                 .HasColumnType("decimal(18,2)");
@@ -34,3 +44,4 @@ namespace ExamenParcial.Data
         }
     }
 }
+
