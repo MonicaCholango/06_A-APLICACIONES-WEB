@@ -1,24 +1,40 @@
-﻿@model ExamenParcial.Models.Producto    
+﻿@model ExamenParcial.Models.Producto
 
-<h2>Nuevo Producto</h2>
+@{
+    ViewData["Title"] = "Crear Producto";
+}
 
-<form asp-action="Create" method="post">
-    <div class="form-group">
-        <label for="Nombre">Nombre</label>
-        <input type="text" class="form-control" id="Nombre" name="Nombre" value="@Model.Nombre" required />
-    </div>
-    <div class="form-group">
-        <label for="Descripcion">Descripción</label>
-        <input type="text" class="form-control" id="Descripcion" name="Descripcion" value="@Model.Descripcion" required />
-    </div>
-    <div class="form-group">
-        <label for="Precio">Precio</label>
-        <input type="number" class="form-control" id="Precio" name="Precio" value="@Model.Precio" required />
-    </div>
-    <div class="form-group">
-        <label for="Stock">Stock</label>
-        <input type="number" class="form-control" id="Stock" name="Stock" value="@Model.Stock" required />
-    </div>
-    <button type="submit" class="btn btn-primary">Guardar</button>
-</form>
+<h1>Crear Producto</h1>
+<hr />
 
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nombre)
+        @Html.EditorFor(model => model.Nombre)
+        @Html.ValidationMessageFor(model => model.Nombre)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Descripcion)
+        @Html.EditorFor(model => model.Descripcion)
+        @Html.ValidationMessageFor(model => model.Descripcion)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Precio)
+        @Html.EditorFor(model => model.Precio)
+        @Html.ValidationMessageFor(model => model.Precio)
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Stock)
+        @Html.EditorFor(model => model.Stock)
+        @Html.ValidationMessageFor(model => model.Stock)
+    </div>
+
+    <button type="submit" class="btn btn-success">Crear Producto</button>
+    <a href="@Url.Action("Index")" class="btn btn-secondary">Cancelar</a>
+}
