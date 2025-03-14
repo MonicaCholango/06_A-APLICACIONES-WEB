@@ -14,7 +14,6 @@ namespace ExamenParcial.Controllers
             _context = context;
         }
 
-
         public async Task<IActionResult> Index()
         {
             return View(await _context.Clientes.ToListAsync());
@@ -29,6 +28,7 @@ namespace ExamenParcial.Controllers
 
             var cliente = await _context.Clientes
                 .FirstOrDefaultAsync(m => m.ClienteId == id);
+
             if (cliente == null)
             {
                 return NotFound();
@@ -48,6 +48,8 @@ namespace ExamenParcial.Controllers
         {
             if (ModelState.IsValid)
             {
+                cliente.CreatedAt = DateTime.Now;
+                cliente.UpdatedAt = DateTime.Now;
                 _context.Add(cliente);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -55,6 +57,7 @@ namespace ExamenParcial.Controllers
             return View(cliente);
         }
 
+   
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -67,11 +70,13 @@ namespace ExamenParcial.Controllers
             {
                 return NotFound();
             }
+
             return View(cliente);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+ 
         public async Task<IActionResult> Edit(int id, [Bind("ClienteId,Nombre,Apellido,Email,Telefono,Direccion")] Cliente cliente)
         {
             if (id != cliente.ClienteId)
@@ -103,6 +108,7 @@ namespace ExamenParcial.Controllers
             return View(cliente);
         }
 
+   
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -112,6 +118,7 @@ namespace ExamenParcial.Controllers
 
             var cliente = await _context.Clientes
                 .FirstOrDefaultAsync(m => m.ClienteId == id);
+
             if (cliente == null)
             {
                 return NotFound();
@@ -122,6 +129,7 @@ namespace ExamenParcial.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+    
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var cliente = await _context.Clientes.FindAsync(id);

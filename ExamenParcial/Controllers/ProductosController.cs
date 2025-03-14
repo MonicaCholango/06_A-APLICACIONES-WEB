@@ -26,7 +26,7 @@ namespace ExamenParcial.Controllers
             return View(await _context.Productos.ToListAsync());
         }
 
-   
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -49,7 +49,7 @@ namespace ExamenParcial.Controllers
             return View();
         }
 
- 
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Nombre,Descripcion,Precio,Stock")] Producto producto)

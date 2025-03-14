@@ -12,6 +12,8 @@
 {
     @Html.AntiForgeryToken()
 
+    @Html.HiddenFor(model => model.ClienteId)
+
     <div class="form-group">
         @Html.LabelFor(model => model.Nombre)
         @Html.EditorFor(model => model.Nombre)
