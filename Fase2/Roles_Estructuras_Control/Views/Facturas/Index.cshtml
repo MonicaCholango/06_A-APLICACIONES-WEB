@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Roles_Estructuras_Control.Models.FacturaModel>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div id="imprimir">
+    <h1>Facturas</h1>
+
+    <button onclick="imprimirFactura()" class="btn btn-primary no-print my-2">Imprimir Facturas</button>
+    
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                Fecha Factura
+            </th>
+            <th>
+                Número Factura
+            </th>
+            <th>
+                Cliente
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaIngreso)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumeroFacrtura)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClientesModel.Nombre)
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
