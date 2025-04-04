@@ -1,0 +1,34 @@
+﻿@model Examen_Parcial2.Models.Lugar
+
+@{
+    ViewData["Title"] = "Eliminar Lugar";
+}
+
+<h1 class="text-danger">Eliminar Lugar</h1>
+
+<div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading"><i class="bi bi-exclamation-triangle"></i> ¿Está seguro que desea eliminar este lugar?</h4>
+    <p>Esta acción no se puede deshacer. Tenga en cuenta que si hay eventos asociados a este lugar, no se podrá eliminar.</p>
+</div>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h4>@Model.Nombre</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Direccion)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Direccion)</dd>
+        </dl>
+    </div>
+    <div class="card-footer">
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn btn-danger">
+                <i class="bi bi-trash"></i> Confirmar Eliminación
+            </button>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Volver
+            </a>
+        </form>
+    </div>
+</div>

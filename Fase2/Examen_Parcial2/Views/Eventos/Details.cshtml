@@ -1,0 +1,85 @@
+﻿@model Examen_Parcial2.Models.Evento
+@{
+    ViewData["Title"] = "Detalles del Evento";
+}
+<div class="card mb-4">
+    <div class="card-header bg-primary text-white">
+        <h3 class="mb-0">@Model.Nombre</h3>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-6">
+                <dl class="row">
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Fecha)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Fecha)</dd>
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Lugar)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Lugar.Nombre)</dd>
+                    <dt class="col-sm-4">Dirección</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Lugar.Direccion)</dd>
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.Descripcion)</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.Descripcion)</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">
+            <i class="bi bi-pencil"></i> Editar
+        </a>
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Volver
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h4 class="mb-0">Participantes</h4>
+            </div>
+            <div class="card-body">
+                @if (Model.EventosParticipantes != null && Model.EventosParticipantes.Any())
+                {
+                    <ul class="list-group">
+                        @foreach (var ep in Model.EventosParticipantes)
+                        {
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                @ep.Participante.Nombre
+                                <span class="badge bg-primary rounded-pill">@ep.Participante.Email</span>
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p class="text-muted">No hay participantes registrados en este evento.</p>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0">Patrocinadores</h4>
+            </div>
+            <div class="card-body">
+                @if (Model.EventosPatrocinadores != null && Model.EventosPatrocinadores.Any())
+                {
+                    <ul class="list-group">
+                        @foreach (var ep in Model.EventosPatrocinadores)
+                        {
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                @ep.Patrocinador.Nombre
+                                <span class="badge bg-success rounded-pill">@ep.Patrocinador.TipoPatrocinio</span>
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p class="text-muted">No hay patrocinadores para este evento.</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>

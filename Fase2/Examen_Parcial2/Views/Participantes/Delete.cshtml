@@ -1,0 +1,32 @@
+﻿@model Examen_Parcial2.Models.Participante
+@{
+    ViewData["Title"] = "Eliminar Participante";
+}
+<h1 class="text-danger">Eliminar Participante</h1>
+<div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading"><i class="bi bi-exclamation-triangle"></i> ¿Está seguro que desea eliminar este participante?</h4>
+    <p>Esta acción no se puede deshacer. Si el participante está registrado en eventos, también se eliminarán esos registros.</p>
+</div>
+<div class="card mb-4">
+    <div class="card-body">
+        <h4>@Model.Nombre</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Email)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Email)</dd>
+            <dt class="col-sm-3">Eventos registrados</dt>
+            <dd class="col-sm-9">@(Model.EventosParticipantes != null ? Model.EventosParticipantes.Count : 0)</dd>
+        </dl>
+    </div>
+    <div class="card-footer">
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn btn-danger">
+                <i class="bi bi-trash"></i> Confirmar Eliminación
+            </button>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Volver
+            </a>
+        </form>
+    </div>
+</div>

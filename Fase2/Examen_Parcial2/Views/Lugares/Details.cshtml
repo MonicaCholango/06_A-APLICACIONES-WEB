@@ -1,0 +1,65 @@
+﻿@model Examen_Parcial2.Models.Lugar
+
+@{
+    ViewData["Title"] = "Detalles del Lugar";
+}
+
+<div class="card mb-4">
+    <div class="card-header bg-primary text-white">
+        <h3 class="mb-0">@Model.Nombre</h3>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Direccion)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Direccion)</dd>
+        </dl>
+    </div>
+    <div class="card-footer">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">
+            <i class="bi bi-pencil"></i> Editar
+        </a>
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Volver
+        </a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header bg-info text-white">
+        <h4 class="mb-0">Eventos en este lugar</h4>
+    </div>
+    <div class="card-body">
+        @if (Model.Eventos != null && Model.Eventos.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-sm table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Fecha</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var evento in Model.Eventos)
+                        {
+                            <tr>
+                                <td>@evento.Nombre</td>
+                                <td>@evento.Fecha.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td>
+                                    <a asp-controller="Eventos" asp-action="Details" asp-route-id="@evento.Id" class="btn btn-sm btn-info">
+                                        <i class="bi bi-info-circle"></i> Ver
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p class="text-muted">No hay eventos programados en este lugar.</p>
+        }
+    </div>
+</div>

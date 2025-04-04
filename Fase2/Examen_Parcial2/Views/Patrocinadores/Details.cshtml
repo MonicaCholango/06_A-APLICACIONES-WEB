@@ -1,0 +1,64 @@
+﻿@model Examen_Parcial2.Models.Patrocinador
+@{
+    ViewData["Title"] = "Detalles del Patrocinador";
+}
+<div class="card mb-4">
+    <div class="card-header bg-primary text-white">
+        <h3 class="mb-0">@Model.Nombre</h3>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.TipoPatrocinio)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.TipoPatrocinio)</dd>
+        </dl>
+    </div>
+    <div class="card-footer">
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">
+            <i class="bi bi-pencil"></i> Editar
+        </a>
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Volver
+        </a>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header bg-success text-white">
+        <h4 class="mb-0">Eventos patrocinados</h4>
+    </div>
+    <div class="card-body">
+        @if (Model.EventosPatrocinadores != null && Model.EventosPatrocinadores.Any())
+        {
+            <div class="table-responsive">
+                <table class="table table-sm table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nombre del Evento</th>
+                            <th>Fecha</th>
+                            <th>Lugar</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var ep in Model.EventosPatrocinadores)
+                        {
+                            <tr>
+                                <td>@ep.Evento.Nombre</td>
+                                <td>@ep.Evento.Fecha.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td>@ep.Evento.Lugar.Nombre</td>
+                                <td>
+                                    <a asp-controller="Eventos" asp-action="Details" asp-route-id="@ep.EventoId" class="btn btn-sm btn-info">
+                                        <i class="bi bi-info-circle"></i> Ver Evento
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+        else
+        {
+            <p class="text-muted">Este patrocinador no está registrado en ningún evento.</p>
+        }
+    </div>
+</div>

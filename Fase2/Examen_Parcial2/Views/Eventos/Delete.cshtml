@@ -1,0 +1,40 @@
+﻿@model Examen_Parcial2.Models.Evento
+
+@{
+    ViewData["Title"] = "Eliminar Evento";
+}
+
+<h1 class="text-danger">Eliminar Evento</h1>
+
+<div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading"><i class="bi bi-exclamation-triangle"></i> ¿Está seguro que desea eliminar este evento?</h4>
+    <p>Esta acción no se puede deshacer y eliminará toda la información relacionada con este evento.</p>
+</div>
+
+<div class="card mb-4">
+    <div class="card-body">
+        <h4>@Model.Nombre</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Fecha)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Fecha)</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Lugar)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Lugar.Nombre)</dd>
+
+            <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Descripcion)</dt>
+            <dd class="col-sm-9">@Html.DisplayFor(model => model.Descripcion)</dd>
+        </dl>
+    </div>
+    <div class="card-footer">
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <button type="submit" class="btn btn-danger">
+                <i class="bi bi-trash"></i> Confirmar Eliminación
+            </button>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Volver
+            </a>
+        </form>
+    </div>
+</div>
