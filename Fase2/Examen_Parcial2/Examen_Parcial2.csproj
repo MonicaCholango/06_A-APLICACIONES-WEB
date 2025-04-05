@@ -2,19 +2,48 @@
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>aspnet-Examen_Parcial2-fdb3dc81-d6ab-4256-a3f0-128dbe111aac</UserSecretsId>
+    <UserSecretsId>aspnet-Roles_Estructuras_Control-11d43d4b-2d2d-4b29-af71-02bc31de8e87</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.13" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.13" />
-    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.13" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.13" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.13" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.13" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.11" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.11" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Proveedores\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Proveedores\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Proveedores\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Proveedores\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Proveedores\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Productos\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Productos\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Productos\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Productos\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Productos\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Facturas\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\DetalleFactura\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\DetalleFactura\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\DetalleFactura\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\DetalleFactura\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\DetalleFactura\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Clientes\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Clientes\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Clientes\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Clientes\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Clientes\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Stocks\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Stocks\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Stocks\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Stocks\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Stocks\Index.cshtml" />
   </ItemGroup>
 
 </Project>

@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Examen_Parcial2.Data;
+using Examen_Parcial2.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Examen_Parcial2.Models;
-using Examen_Parcial2.Data;
 
 namespace Examen_Parcial2.Controllers
 {
-    [Authorize(Policy = "RequireAdminRole")]
+    // [Authorize(Policy = "RequireAdminRole")]
+    [Authorize]
     public class LugaresController : Controller
     {
         private readonly ApplicationDbContext _context;

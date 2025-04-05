@@ -1,6 +1,6 @@
 using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
 using Examen_Parcial2.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Examen_Parcial2.Controllers;
 

@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Examen_Parcial2.Data;
+using Examen_Parcial2.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Examen_Parcial2.Models;
-using Examen_Parcial2.Data;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Examen_Parcial2.Controllers
 {
-    [Authorize(Policy = "RequireAdminRole")]
+    //[Authorize(Policy = "RequireAdminRole")]
     public class PatrocinadoresController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -159,7 +159,7 @@ namespace Examen_Parcial2.Controllers
         }
 
         // GET: Patrocinadores/AsignarEvento/5
-        [Authorize(Policy = "RequireAdminRole")]
+        //[Authorize(Policy = "RequireAdminRole")]
         public async Task<IActionResult> AsignarEvento(int? id)
         {
             if (id == null)
@@ -193,7 +193,7 @@ namespace Examen_Parcial2.Controllers
         // POST: Patrocinadores/AsignarEvento
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Policy = "RequireAdminRole")]
+        //[Authorize(Policy = "RequireAdminRole")]
         public async Task<IActionResult> AsignarEvento(int eventoId, int patrocinadorId, decimal montoPatrocinio)
         {
             var eventoPatrocinador = new EventoPatrocinador

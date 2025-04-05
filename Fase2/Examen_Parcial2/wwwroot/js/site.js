@@ -1,4 +1,63 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿$().ready(
+    () => {
+        detallefactura()
+    }
+);
 
-// Write your JavaScript code.
+var detallefactura = () => {
+    var leerClientes = new DetalleFactura()
+    leerClientes.listaClientes()
+}
+
+var unCliente = () => {
+    var id = $('#listaClientes').val()
+    var uncliente = new DetalleFactura()
+    uncliente.unCliente(id)
+}
+
+var nuevoCliente = () => {
+    var nuevoCliente = new DetalleFactura()
+    nuevoCliente.nuevoCliente()
+}
+
+var limpiarcajas = () => {
+    var limpiarcajas = new DetalleFactura()
+    limpiarcajas.limpiarCampos()
+}
+
+var listaProductos = () => {
+    var listaProductos = new DetalleFactura()
+    listaProductos.listaProductos()
+
+}
+
+var controlarstock = (caja) => {
+    var controlarstock = new DetalleFactura()
+    controlarstock.controlarstock(caja.id, caja.value)
+}
+
+
+var cargarProdcutosLista = (id, precio, nombre) => {
+    var cargarProdcutosLista = new DetalleFactura()
+    cargarProdcutosLista.cargarProdcutosLista(id, precio, nombre);
+}
+
+var eliminarfila = (boton) => {
+    var eliminarfila = new DetalleFactura()
+    eliminarfila.eliminarfila(boton)
+}
+
+var actualizarTotal = () => {
+    var actualizarTotal = new DetalleFactura()
+    actualizarTotal.actualizarTotal()
+}
+
+
+var guardarFactura = () => {
+    var guardarFactura = new DetalleFactura();
+    guardarFactura.guardarFactura();
+};
+
+const imprimirFactura = () => {
+    window.print();
+}

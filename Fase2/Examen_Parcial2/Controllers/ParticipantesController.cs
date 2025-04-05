@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Examen_Parcial2.Data;
+using Examen_Parcial2.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Examen_Parcial2.Models;
-using Examen_Parcial2.Data;
 
 namespace Examen_Parcial2.Controllers
 {
-    [Authorize(Policy = "RequireOrganizadorRole")]
+    //[Authorize(Policy = "RequireOrganizadorRole")]
     public class ParticipantesController : Controller
     {
         private readonly ApplicationDbContext _context;

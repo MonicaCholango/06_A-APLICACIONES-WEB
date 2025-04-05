@@ -9,157 +9,21 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Examen_Parcial2.Data.Migrations
+namespace Examen_Parcial2.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250404050348_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250313235947_relacion-stock")]
+    partial class relacionstock
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.13")
+                .HasAnnotation("ProductVersion", "8.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("Examen_Parcial2.Models.Evento", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Descripcion")
-                        .IsRequired()
-                        .HasMaxLength(500)
-                        .HasColumnType("nvarchar(500)");
-
-                    b.Property<DateTime>("Fecha")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("LugarId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("LugarId");
-
-                    b.ToTable("Eventos");
-                });
-
-            modelBuilder.Entity("Examen_Parcial2.Models.EventoParticipante", b =>
-                {
-                    b.Property<int>("EventoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ParticipanteId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Confirmado")
-                        .HasColumnType("bit");
-
-                    b.HasKey("EventoId", "ParticipanteId");
-
-                    b.HasIndex("ParticipanteId");
-
-                    b.ToTable("EventosParticipantes");
-                });
-
-            modelBuilder.Entity("Examen_Parcial2.Models.EventoPatrocinador", b =>
-                {
-                    b.Property<int>("EventoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PatrocinadorId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("MontoPatrocinio")
-                        .HasPrecision(18, 2)
-                        .HasColumnType("decimal(18,2)");
-
-                    b.HasKey("EventoId", "PatrocinadorId");
-
-                    b.HasIndex("PatrocinadorId");
-
-                    b.ToTable("EventosPatrocinadores");
-                });
-
-            modelBuilder.Entity("Examen_Parcial2.Models.Lugar", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Direccion")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Lugares");
-                });
-
-            modelBuilder.Entity("Examen_Parcial2.Models.Participante", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Participantes");
-                });
-
-            modelBuilder.Entity("Examen_Parcial2.Models.Patrocinador", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Nombre")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("TipoPatrocinio")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Patrocinadores");
-                });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
@@ -306,10 +170,12 @@ namespace Examen_Parcial2.Data.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -346,10 +212,12 @@ namespace Examen_Parcial2.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Name")
-                        .HasColumnType("nvarchar(450)");
+                        .HasMaxLength(128)
+                        .HasColumnType("nvarchar(128)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -359,53 +227,175 @@ namespace Examen_Parcial2.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Examen_Parcial2.Models.Evento", b =>
+            modelBuilder.Entity("Examen_Parcial2.Models.ClientesModel", b =>
                 {
-                    b.HasOne("Examen_Parcial2.Models.Lugar", "Lugar")
-                        .WithMany("Eventos")
-                        .HasForeignKey("LugarId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-                    b.Navigation("Lugar");
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Direccion")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Nombre")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telefono")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Clientes");
                 });
 
-            modelBuilder.Entity("Examen_Parcial2.Models.EventoParticipante", b =>
+            modelBuilder.Entity("Examen_Parcial2.Models.DetalleFacturaModel", b =>
                 {
-                    b.HasOne("Examen_Parcial2.Models.Evento", "Evento")
-                        .WithMany("EventosParticipantes")
-                        .HasForeignKey("EventoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-                    b.HasOne("Examen_Parcial2.Models.Participante", "Participante")
-                        .WithMany("EventosParticipantes")
-                        .HasForeignKey("ParticipanteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Navigation("Evento");
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("int");
 
-                    b.Navigation("Participante");
+                    b.Property<int>("FacturaModelId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductoModelsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StockModelsId")
+                        .HasColumnType("int");
+
+                    b.Property<float>("valor")
+                        .HasColumnType("real");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FacturaModelId");
+
+                    b.HasIndex("ProductoModelsId");
+
+                    b.HasIndex("StockModelsId");
+
+                    b.ToTable("DetalleFactura");
                 });
 
-            modelBuilder.Entity("Examen_Parcial2.Models.EventoPatrocinador", b =>
+            modelBuilder.Entity("Examen_Parcial2.Models.FacturaModel", b =>
                 {
-                    b.HasOne("Examen_Parcial2.Models.Evento", "Evento")
-                        .WithMany("EventosPatrocinadores")
-                        .HasForeignKey("EventoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-                    b.HasOne("Examen_Parcial2.Models.Patrocinador", "Patrocinador")
-                        .WithMany("EventosPatrocinadores")
-                        .HasForeignKey("PatrocinadorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Navigation("Evento");
+                    b.Property<int>("ClientesModelId")
+                        .HasColumnType("int");
 
-                    b.Navigation("Patrocinador");
+                    b.Property<DateOnly>("FechaIngreso")
+                        .HasColumnType("date");
+
+                    b.Property<int>("NumeroFacrtura")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClientesModelId");
+
+                    b.ToTable("Facturas");
+                });
+
+            modelBuilder.Entity("Examen_Parcial2.Models.ProductoModels", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("CodigoBarras")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NombreProducto")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Presentacion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Productos");
+                });
+
+            modelBuilder.Entity("Examen_Parcial2.Models.ProveedoresModels", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Correo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Direccion")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NombreProveedor")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telefono")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Proveedores");
+                });
+
+            modelBuilder.Entity("Examen_Parcial2.Models.StockModels", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Cantidad")
+                        .HasColumnType("int");
+
+                    b.Property<DateOnly>("FechaCaducidad")
+                        .HasColumnType("date");
+
+                    b.Property<DateOnly>("FechaFabricacion")
+                        .HasColumnType("date");
+
+                    b.Property<DateOnly>("FechaRegistro")
+                        .HasColumnType("date");
+
+                    b.Property<int>("ProductoModelsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProveedoresModelsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductoModelsId");
+
+                    b.HasIndex("ProveedoresModelsId");
+
+                    b.ToTable("Stocks");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -459,26 +449,61 @@ namespace Examen_Parcial2.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Examen_Parcial2.Models.Evento", b =>
+            modelBuilder.Entity("Examen_Parcial2.Models.DetalleFacturaModel", b =>
                 {
-                    b.Navigation("EventosParticipantes");
+                    b.HasOne("Examen_Parcial2.Models.FacturaModel", "FacturaModel")
+                        .WithMany()
+                        .HasForeignKey("FacturaModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.Navigation("EventosPatrocinadores");
+                    b.HasOne("Examen_Parcial2.Models.ProductoModels", "ProductoModels")
+                        .WithMany()
+                        .HasForeignKey("ProductoModelsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Examen_Parcial2.Models.StockModels", "StockModels")
+                        .WithMany()
+                        .HasForeignKey("StockModelsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("FacturaModel");
+
+                    b.Navigation("ProductoModels");
+
+                    b.Navigation("StockModels");
                 });
 
-            modelBuilder.Entity("Examen_Parcial2.Models.Lugar", b =>
+            modelBuilder.Entity("Examen_Parcial2.Models.FacturaModel", b =>
                 {
-                    b.Navigation("Eventos");
+                    b.HasOne("Examen_Parcial2.Models.ClientesModel", "ClientesModel")
+                        .WithMany()
+                        .HasForeignKey("ClientesModelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ClientesModel");
                 });
 
-            modelBuilder.Entity("Examen_Parcial2.Models.Participante", b =>
+            modelBuilder.Entity("Examen_Parcial2.Models.StockModels", b =>
                 {
-                    b.Navigation("EventosParticipantes");
-                });
+                    b.HasOne("Examen_Parcial2.Models.ProductoModels", "ProductoModels")
+                        .WithMany()
+                        .HasForeignKey("ProductoModelsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-            modelBuilder.Entity("Examen_Parcial2.Models.Patrocinador", b =>
-                {
-                    b.Navigation("EventosPatrocinadores");
+                    b.HasOne("Examen_Parcial2.Models.ProveedoresModels", "ProveedoresModels")
+                        .WithMany()
+                        .HasForeignKey("ProveedoresModelsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ProductoModels");
+
+                    b.Navigation("ProveedoresModels");
                 });
 #pragma warning restore 612, 618
         }

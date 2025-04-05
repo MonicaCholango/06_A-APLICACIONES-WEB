@@ -1,0 +1,107 @@
+@{
+    ViewData["Title"] = "Administrar Participantes";
+    var evento = ViewBag.Evento;
+    var participantesEvento = ViewBag.ParticipantesEvento;
+    var participantesDisponibles = ViewBag.ParticipantesDisponibles;
+}
+
+<h1>Administrar Participantes</h1>
+<h4>Evento: @evento.Nombre</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">Participantes Actuales</h5>
+            </div>
+            <div class="card-body">
+                @if (participantesEvento != null && participantesEvento.Count > 0)
+                {
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Nombre</th>
+                                    <th>Email</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var participante in participantesEvento)
+                                {
+                                    <tr>
+                                        <td>@participante.Nombre</td>
+                                        <td>@participante.Email</td>
+                                        <td>
+                                            <form asp-action="RemoveParticipant" method="post" onsubmit="return confirm('¿Está seguro que desea eliminar este participante del evento?');">
+                                                <input type="hidden" name="eventoId" value="@evento.Id" />
+                                                <input type="hidden" name="participanteId" value="@participante.Id" />
+                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                    <i class="bi bi-trash"></i> Eliminar
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+                else
+                {
+                    <div class="alert alert-info">
+                        No hay participantes registrados para este evento.
+                    </div>
+                }
+            </div>
+            <div class="card-footer">
+                <span class="text-muted">Total: @(participantesEvento?.Count ?? 0) participantes</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">Agregar Participantes</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="AddParticipant" method="post">
+                    <input type="hidden" name="eventoId" value="@evento.Id" />
+                    
+                    <div class="mb-3">
+                        <label for="participanteId" class="form-label">Seleccionar Participante Existente</label>
+                        <select id="participanteId" name="participanteId" class="form-select mb-3">
+                            <option value="">-- Seleccionar participante existente --</option>
+                            @if (participantesDisponibles != null)
+                            {
+                                @foreach (var participante in participantesDisponibles)
+                                {
+                                    <option value="@participante.Id">@participante.Nombre (@participante.Email)</option>
+                                }
+                            }
+                        </select>
+                        
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-person-plus-fill"></i> Agregar Participante
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        <div class="card mt-3">
+            <div class="card-body">
+                <a asp-action="Edit" asp-route-id="@evento.Id" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Volver a Editar Evento
+                </a>
+                <a asp-action="Details" asp-route-id="@evento.Id" class="btn btn-primary">
+                    <i class="bi bi-info-circle"></i> Ver Detalles del Evento
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
