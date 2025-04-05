@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Examen_Parcial2.Data;
+﻿using Examen_Parcial2.Data;
 using Examen_Parcial2.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -10,8 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Examen_Parcial2.Controllers
 {
-    // [Authorize(Policy = "RequireAdminRole")]
-    [Authorize]
+    [Authorize(Policy = "RequireAdminRole")]
     public class LugaresController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -21,15 +16,11 @@ namespace Examen_Parcial2.Controllers
             _context = context;
         }
 
-        // GET: Lugares
-        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Lugares.ToListAsync());
         }
 
-        // GET: Lugares/Details/5
-        [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)

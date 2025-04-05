@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Identity;
 //UUID
-using System.ComponentModel.DataAnnotations;
 
 namespace Examen_Parcial2.Models
 {

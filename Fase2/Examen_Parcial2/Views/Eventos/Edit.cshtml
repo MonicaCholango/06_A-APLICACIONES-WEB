@@ -1,4 +1,4 @@
-﻿@model Examen_Parcial2.Models.Evento
+﻿@model Evento
 
 @{
     ViewData["Title"] = "Editar Evento";
@@ -59,10 +59,10 @@
                 <h4 class="mb-0">Participantes</h4>
             </div>
             <div class="card-body">
-                @if (ViewBag.Participantes != null && ((List<Examen_Parcial2.Models.Participante>)ViewBag.Participantes).Any())
+                @if (ViewBag.Participantes != null && ((List<Participante>)ViewBag.Participantes).Any())
                 {
                     <ul class="list-group">
-                        @foreach (var participante in (List<Examen_Parcial2.Models.Participante>)ViewBag.Participantes)
+                        @foreach (var participante in (List<Participante>)ViewBag.Participantes)
                         {
                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                 @participante.Nombre

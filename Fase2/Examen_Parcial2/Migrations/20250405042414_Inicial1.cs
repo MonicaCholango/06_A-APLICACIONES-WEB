@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace Examen_Parcial2.Migrations
 {
     /// <inheritdoc />
-    public partial class inicial : Migration
+    public partial class Inicial1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,6 +30,7 @@ namespace Examen_Parcial2.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Cedula = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -51,50 +52,45 @@ namespace Examen_Parcial2.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Clientes",
+                name: "Lugares",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Direccion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    email = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Nombre = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Direccion = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Clientes", x => x.Id);
+                    table.PrimaryKey("PK_Lugares", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Productos",
+                name: "Participantes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NombreProducto = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Presentacion = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CodigoBarras = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Nombre = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Productos", x => x.Id);
+                    table.PrimaryKey("PK_Participantes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Proveedores",
+                name: "Patrocinadores",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    NombreProveedor = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Direccion = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Correo = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Nombre = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    TipoPatrocinio = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Proveedores", x => x.Id);
+                    table.PrimaryKey("PK_Patrocinadores", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -204,80 +200,73 @@ namespace Examen_Parcial2.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Facturas",
+                name: "Eventos",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FechaIngreso = table.Column<DateOnly>(type: "date", nullable: false),
-                    NumeroFacrtura = table.Column<int>(type: "int", nullable: false),
-                    ClientesModelId = table.Column<int>(type: "int", nullable: false)
+                    Nombre = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Descripcion = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
+                    LugarId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Facturas", x => x.Id);
+                    table.PrimaryKey("PK_Eventos", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Facturas_Clientes_ClientesModelId",
-                        column: x => x.ClientesModelId,
-                        principalTable: "Clientes",
+                        name: "FK_Eventos_Lugares_LugarId",
+                        column: x => x.LugarId,
+                        principalTable: "Lugares",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Stocks",
+                name: "EventosParticipantes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Cantidad = table.Column<int>(type: "int", nullable: false),
-                    FechaFabricacion = table.Column<DateOnly>(type: "date", nullable: false),
-                    FechaCaducidad = table.Column<DateOnly>(type: "date", nullable: false),
-                    FechaRegistro = table.Column<DateOnly>(type: "date", nullable: false),
-                    ProductoModelsId = table.Column<int>(type: "int", nullable: false),
-                    ProveedoresModelsId = table.Column<int>(type: "int", nullable: false)
+                    EventoId = table.Column<int>(type: "int", nullable: false),
+                    ParticipanteId = table.Column<int>(type: "int", nullable: false),
+                    Confirmado = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Stocks", x => x.Id);
+                    table.PrimaryKey("PK_EventosParticipantes", x => new { x.EventoId, x.ParticipanteId });
                     table.ForeignKey(
-                        name: "FK_Stocks_Productos_ProductoModelsId",
-                        column: x => x.ProductoModelsId,
-                        principalTable: "Productos",
+                        name: "FK_EventosParticipantes_Eventos_EventoId",
+                        column: x => x.EventoId,
+                        principalTable: "Eventos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Stocks_Proveedores_ProveedoresModelsId",
-                        column: x => x.ProveedoresModelsId,
-                        principalTable: "Proveedores",
+                        name: "FK_EventosParticipantes_Participantes_ParticipanteId",
+                        column: x => x.ParticipanteId,
+                        principalTable: "Participantes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "DetalleFactura",
+                name: "EventosPatrocinadores",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Cantidad = table.Column<int>(type: "int", nullable: false),
-                    valor = table.Column<float>(type: "real", nullable: false),
-                    ProductoModelsId = table.Column<int>(type: "int", nullable: false),
-                    FacturaModelId = table.Column<int>(type: "int", nullable: false)
+                    EventoId = table.Column<int>(type: "int", nullable: false),
+                    PatrocinadorId = table.Column<int>(type: "int", nullable: false),
+                    MontoPatrocinio = table.Column<decimal>(type: "decimal(18,2)", precision: 18, scale: 2, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_DetalleFactura", x => x.Id);
+                    table.PrimaryKey("PK_EventosPatrocinadores", x => new { x.EventoId, x.PatrocinadorId });
                     table.ForeignKey(
-                        name: "FK_DetalleFactura_Facturas_FacturaModelId",
-                        column: x => x.FacturaModelId,
-                        principalTable: "Facturas",
+                        name: "FK_EventosPatrocinadores_Eventos_EventoId",
+                        column: x => x.EventoId,
+                        principalTable: "Eventos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_DetalleFactura_Productos_ProductoModelsId",
-                        column: x => x.ProductoModelsId,
-                        principalTable: "Productos",
+                        name: "FK_EventosPatrocinadores_Patrocinadores_PatrocinadorId",
+                        column: x => x.PatrocinadorId,
+                        principalTable: "Patrocinadores",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -322,29 +311,19 @@ namespace Examen_Parcial2.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DetalleFactura_FacturaModelId",
-                table: "DetalleFactura",
-                column: "FacturaModelId");
+                name: "IX_Eventos_LugarId",
+                table: "Eventos",
+                column: "LugarId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_DetalleFactura_ProductoModelsId",
-                table: "DetalleFactura",
-                column: "ProductoModelsId");
+                name: "IX_EventosParticipantes_ParticipanteId",
+                table: "EventosParticipantes",
+                column: "ParticipanteId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Facturas_ClientesModelId",
-                table: "Facturas",
-                column: "ClientesModelId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Stocks_ProductoModelsId",
-                table: "Stocks",
-                column: "ProductoModelsId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Stocks_ProveedoresModelsId",
-                table: "Stocks",
-                column: "ProveedoresModelsId");
+                name: "IX_EventosPatrocinadores_PatrocinadorId",
+                table: "EventosPatrocinadores",
+                column: "PatrocinadorId");
         }
 
         /// <inheritdoc />
@@ -366,10 +345,10 @@ namespace Examen_Parcial2.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "DetalleFactura");
+                name: "EventosParticipantes");
 
             migrationBuilder.DropTable(
-                name: "Stocks");
+                name: "EventosPatrocinadores");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -378,16 +357,16 @@ namespace Examen_Parcial2.Migrations
                 name: "AspNetUsers");
 
             migrationBuilder.DropTable(
-                name: "Facturas");
+                name: "Participantes");
 
             migrationBuilder.DropTable(
-                name: "Productos");
+                name: "Eventos");
 
             migrationBuilder.DropTable(
-                name: "Proveedores");
+                name: "Patrocinadores");
 
             migrationBuilder.DropTable(
-                name: "Clientes");
+                name: "Lugares");
         }
     }
 }

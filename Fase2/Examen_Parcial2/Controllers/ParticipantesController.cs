@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Examen_Parcial2.Data;
+﻿using Examen_Parcial2.Data;
 using Examen_Parcial2.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -37,6 +32,7 @@ namespace Examen_Parcial2.Controllers
             var participante = await _context.Participantes
                 .Include(p => p.EventosParticipantes)
                     .ThenInclude(ep => ep.Evento)
+                    .ThenInclude(ep => ep.Lugar)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             if (participante == null)
